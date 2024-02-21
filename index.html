@@ -4,31 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue Fundamentals</title>
-    <h1>Hello</h1>
-    <div id="app">
-      <p v-if="message.length % 2 === 0">
-        Even number of letters: {{ message }}
-      </p>
-      <p v-else>Odd number of letters: {{ message }}</p>
-      <ul>
-        <li v-for="number in listOfNumbers">{{ number }}</li>
-      </ul>
-    </div>
+    <title>Harry Potter Characters</title>
   </head>
   <body>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script>
-      const { createApp } = Vue;
-      const app = createApp({
-        data() {
-          return {
-            message: "hi world",
-            listOfNumbers: [1, 2, 3, 4, 5],
-          };
-        },
-      });
-      app.mount("#app");
-    </script>
+    <h1>Sorting Hat</h1>
+    <div id="app">
+      <p v-if="characterList.length === 0">
+        There are no characters in this universe.
+      </p>
+      <ul v-else>
+        <li v-for="character in characterList">{{ character.name }}: {{character.house}}</li>
+      </ul>
+    </div>
   </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp } = Vue;
+    const app = createApp({
+      data() {
+        return {
+          characterList: [
+            { name: "Harry Potter", house: "Gryffindor" },
+            { name: "Hermione Granger", house: "Gryffindor" },
+            { name: "Ronald Weasley", house: "Gryffindor" },
+            { name: "Draco Malfoy", house: "Slytherin" },
+          ],
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
 </html>
