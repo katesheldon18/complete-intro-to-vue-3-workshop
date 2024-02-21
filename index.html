@@ -7,7 +7,13 @@
     <title>Vue Fundamentals</title>
     <h1>Hello</h1>
     <div id="app">
-      {{ message }}
+      <p v-if="message.length % 2 === 0">
+        Even number of letters: {{ message }}
+      </p>
+      <p v-else>Odd number of letters: {{ message }}</p>
+      <ul>
+        <li v-for="number in listOfNumbers">{{ number }}</li>
+      </ul>
     </div>
   </head>
   <body>
@@ -18,6 +24,7 @@
         data() {
           return {
             message: "hi world",
+            listOfNumbers: [1, 2, 3, 4, 5],
           };
         },
       });
