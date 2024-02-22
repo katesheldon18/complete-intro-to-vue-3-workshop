@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harry Potter Characters</title>
+    <title>Harry Potter Sorting Hat</title>
   </head>
   <body>
     <h1>Sorting Hat</h1>
@@ -13,7 +13,9 @@
         There are no characters in this universe.
       </p>
       <ul v-else>
-        <li v-for="character in characterList">{{ character.name }}: {{character.house}}</li>
+        <li v-for="character in characterList">
+          {{ character.name }}: {{character.house}}
+        </li>
       </ul>
     </div>
   </body>

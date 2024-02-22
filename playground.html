@@ -9,6 +9,10 @@
   <body>
     <h1>Hello</h1>
     <div id="app">
+      <p>Counter</p>
+      <p>{{ count }}</p>
+      <button v-on:click="incrementCount">+</button>
+      <hr />
       {{ message }}
       <p v-if="message.length % 2 === 0">
         Even number of letters: {{ message }}
@@ -25,11 +29,18 @@
     const app = createApp({
       data() {
         return {
+          count: 0,
           message: "hi world",
           listOfNumbers: [1, 2, 3, 4, 5],
         };
       },
+      methods: {
+        incrementCount() {
+          this.count++;
+        },
+      },
     });
+
     app.mount("#app");
   </script>
 </html>
