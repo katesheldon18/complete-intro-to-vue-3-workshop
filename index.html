@@ -2,20 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible"    
+    content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harry Potter Sorting Hat</title>
+    <title>Harry Potter Characters</title>
   </head>
   <body>
-    <h1>Sorting Hat</h1>
+    <h1>Characters in Harry Potter</h1>
     <div id="app">
       <p v-if="characterList.length === 0">
         There are no characters in this universe.
       </p>
       <ul v-else>
-        <li v-for="character in characterList">
-          {{ character.name }}: {{character.house}}
+        <li v-for="character in characterList" >
+          <p>{{ character.name }}: {{character.house}}!</p>
+          <button v-on:click="favoriteCharacter(character)">&#9734 Fave</button>
         </li>
+      </ul>
+      <h2>Add a new character here!</h2>
+      <p>{{ newCharacter }}</p>
+      <input type="text" v-model="newCharacter.name" @keyup.enter="addNewCharacter"/>
+      <h2>List of my faves:</h2>
+      <ul>
+        <li v-for="character in favoriteList">{{ character.name }} &#9733</li>
       </ul>
     </div>
   </body>
@@ -25,14 +34,25 @@
     const app = createApp({
       data() {
         return {
+          newCharacter: {name: '', house: ''},
           characterList: [
             { name: "Harry Potter", house: "Gryffindor" },
             { name: "Hermione Granger", house: "Gryffindor" },
             { name: "Ronald Weasley", house: "Gryffindor" },
             { name: "Draco Malfoy", house: "Slytherin" },
           ],
+          favoriteList: [
+          ]
         };
       },
+      methods: {
+        favoriteCharacter(character) {
+          this.favoriteList.push(character)
+        },
+        addNewCharacter() {
+          this.characterList.push(this.newCharacter)
+        }
+      }
     });
     app.mount("#app");
   </script>
