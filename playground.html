@@ -12,6 +12,10 @@
       <p>Counter</p>
       <p>{{ count }}</p>
       <button v-on:click="incrementCount">+</button>
+      <div>
+        <label for="incrementAmount">Increment by:</label>
+        <input type="number" v-model="incrementAmount" />
+      </div>
       <hr />
       {{ message }}
       <p v-if="message.length % 2 === 0">
@@ -30,14 +34,16 @@
       data() {
         return {
           count: 0,
+          incrementAmount: 1,
           message: "hi world",
           listOfNumbers: [1, 2, 3, 4, 5],
         };
       },
       methods: {
         incrementCount() {
-          this.count++;
+          this.count += this.incrementAmount;
         },
+
       },
     });
 
