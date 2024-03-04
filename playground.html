@@ -9,9 +9,10 @@
   <body>
     <h1>Hello</h1>
     <div id="app">
-      <p>Counter</p>
+      <p>{{ counterTitle }}</p>
       <p>{{ count }}</p>
       <button v-on:click="incrementCount">+</button>
+      <p>{{optimizedIncrementAmount}}</p>
       <div>
         <label for="incrementAmount">Increment by:</label>
         <input type="number" v-model="incrementAmount" />
@@ -34,16 +35,38 @@
       data() {
         return {
           count: 0,
+          counterTitle: "Counter standard",
           incrementAmount: 1,
           message: "hi world",
           listOfNumbers: [1, 2, 3, 4, 5],
         };
       },
-      methods: {
-        incrementCount() {
-          this.count += this.incrementAmount;
+
+      computed: {
+        displayTitle() {
+          if (this.count > 20) {
+            return "Counter long number";
+          } else {
+            return "Counter normal title";
+          }
+        },
+        optimizedIncrementAmount() {
+          return this.displayTitle.length * this.incrementAmount;
         },
       },
+
+      methods: {
+        incrementCount() {
+          this.count += this.optimizedIncrementAmount;
+        },
+      },
+      // watch: {
+      //   count(newValue) {
+      //     if (newValue > 20) {
+      //       this.counterTitle += " very big number";
+      //     }
+      //   },
+      // },
     });
 
     app.mount("#app");
