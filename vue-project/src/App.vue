@@ -1,38 +1,45 @@
 <script>
-export default {
+import Homepage from "./components/Homepage.vue"
+import Login from "./components/Login.vue"
 
-}
+export default {
+  components: {
+    Homepage,
+    Login,
+  },
+  data: () => ({
+    currentPage: "Home",
+  }),
+  methods: {
+    showHomePage() {
+      this.currentPage = "Home";
+    },
+    showLoginPage() {
+      this.currentPage = "Login";
+    },
+  },
+};
 </script>
 
-<div class="wrapper">
-fdjsakfdjs
-</div>
+<template>
+  <header class="header">
+    <span class="logo">
+      <img src="@/assets/vue-hat.png" width="30" /> hello vue
+    </span>
+    <nav class="nav">
+      <a href="#" @click.prevent="showHomePage">Home</a>
+      <a href="#" @click.prevent="showLoginPage">Login</a>
+    </nav>
+  </header>
+  <Homepage v-if="currentPage === 'Home'" />
+  <Login v else />
+</template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 </style>
