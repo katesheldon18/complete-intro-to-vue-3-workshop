@@ -32,6 +32,7 @@ export default {
     </nav>
   </header>
   <Homepage v-if="currentPage === 'Home'" />
+  <!-- you can also say <component is="Homepage"/> -->
   <Login v else />
 </template>
 

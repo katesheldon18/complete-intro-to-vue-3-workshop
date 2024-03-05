@@ -16,14 +16,14 @@
       <ul v-else>
         <li v-for="character in characterList" >
           <p>{{ character.name }}: {{character.house}}!</p>
-          <button v-on:click="favoriteCharacter(character)">&#9734 Fave</button>
+          <button v-on:click="favoriteCharacter(character)">Fave</button>
         </li>
       </ul>
       <h2>Add a new character here!</h2>
       <input type="text" v-model="newCharacter.name" @keyup.enter="addNewCharacter"/>
       <h2>List of my faves:</h2>
       <ul>
-        <li v-for="character in favoriteList">{{ character.name }} &#9733</li>
+        <li v-for="character in favoriteList">{{ character.name }}</li>
       </ul>
     </div>
   </body>
